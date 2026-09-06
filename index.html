@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Finora — Monthly Finance Manager</title>
+<title>Monéa — Your Money Era</title>
 <style>
 :root{
   --bg:#393646;--surface:#4F4557;--sage:#6D5D6E;--cream:#F4EEE0;
@@ -89,6 +89,15 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;b
 .badge{border-radius:999px!important;background:rgba(142,124,160,.10)!important;border-color:rgba(142,124,160,.18)!important}
 .table-wrap{border-color:rgba(244,238,224,.08)!important}.table th{color:#85808d}.table td{border-color:rgba(244,238,224,.06)!important}
 @media(max-width:800px){.sidebar{background:rgba(12,10,15,.96)}.nav button.active:before{display:none}.bottom-nav{background:rgba(13,11,17,.94)!important;backdrop-filter:blur(18px);border-top:1px solid rgba(244,238,224,.08)!important}}
+
+/* MONÉA — signature logo refresh */
+.brand{gap:13px;align-items:center}
+.brand-mark{position:relative;overflow:hidden;width:45px;height:45px;border-radius:15px;background:var(--cream);color:var(--bg);box-shadow:0 0 32px rgba(244,238,224,.16);font-family:'Great Vibes',cursive;font-size:29px;font-weight:400;transform:rotate(-5deg);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+.brand-mark span{position:relative;z-index:2;line-height:1}
+.brand-mark i{position:absolute;width:21px;height:21px;border:2px solid var(--sage);border-left-color:transparent;border-bottom-color:transparent;border-radius:50%;right:-5px;bottom:-5px;transform:rotate(-28deg);opacity:.9}
+.brand:hover .brand-mark{transform:rotate(3deg) scale(1.06);box-shadow:0 0 42px rgba(244,238,224,.25)}
+.brand-copy strong{font-family:'Great Vibes',cursive!important;font-size:27px!important;font-weight:400;letter-spacing:.01em!important;line-height:.8;display:block}
+.brand-copy small{font-family:'DM Sans',sans-serif!important;font-size:9px!important;letter-spacing:.08em;text-transform:uppercase;color:#b9a9bf;margin-top:6px;display:block}
 </style>
 
 <style>
@@ -195,7 +204,7 @@ body:before{z-index:-1!important;animation:grainMove 9s steps(8) infinite}
 <body>
 <div class="app">
 <aside class="sidebar">
-  <div class="brand"><div class="brand-mark">₨</div><div><strong>MOONI</strong><small>your money, your era</small></div></div>
+  <div class="brand"><div class="brand-mark" aria-label="Monéa logo"><span>M</span><i></i></div><div class="brand-copy"><strong>Monéa</strong><small>money, but make it yours</small></div></div>
   <nav class="nav" id="sidebarNav">
     <button class="active" data-view="dashboard"><i>⌂</i>Home</button>
     <button data-view="expenses"><i>↘</i>Spending</button>
