@@ -198,6 +198,7 @@ body:before{z-index:-1!important;animation:grainMove 9s steps(8) infinite}
 
 @media(max-width:1100px){.sidebar{left:12px;right:12px;overflow-x:auto}.brand small{display:none}.nav{overflow:visible}.main{padding:118px 24px 60px}.nav button{padding:9px 10px!important}.nav button:not(.active){font-size:0}.nav button:not(.active) i{font-size:14px}.nav button.active{font-size:11px}.dashboard-grid{grid-template-columns:1fr!important}.stats{grid-template-columns:1fr 1fr}.stats .card:nth-child(4){grid-column:auto}.stats .card:first-child{grid-row:auto;min-height:200px!important}}
 @media(max-width:760px){.sidebar{display:none}.main{padding:24px 15px 92px}.topbar{margin-bottom:24px}.kicker{font-size:20px!important}.title{font-size:38px!important}.stats{grid-template-columns:1fr 1fr;gap:10px}.stats .card{min-height:145px!important;padding:18px!important;border-radius:24px!important}.stats .card:first-child{grid-column:span 2;min-height:205px!important}.stats .card:nth-child(4){grid-column:span 2}.dashboard-grid{gap:10px!important}.card{border-radius:24px!important}.overview{gap:8px}.actions .btn{padding:10px 13px}.actions .btn:not(.primary){display:none}}
+@media(max-width:760px){.actions #incomeBtn{display:inline-flex!important}.actions{display:flex;gap:8px;flex-wrap:wrap}.actions #incomeBtn,.actions #addBtn{flex:1;min-width:0}.actions .btn{white-space:nowrap}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -324,7 +325,7 @@ const currencies={
   CAD:{name:"Canadian Dollar",symbol:"CA$",locale:"en-CA"},
   AUD:{name:"Australian Dollar",symbol:"A$",locale:"en-AU"}
 };
-let state=JSON.parse(localStorage.getItem("finora-data")||"null")||{income:250000,expenses:[],payments:[],savingsGoal:50000,savingsCurrent:0,currency:"PKR"};
+let state=JSON.parse(localStorage.getItem("finora-data")||"null")||{income:0,expenses:[],payments:[],savingsGoal:50000,savingsCurrent:0,currency:"PKR"};
 state.currency=state.currency&&currencies[state.currency]?state.currency:"PKR";
 let calDate=new Date(); calDate.setDate(1);
 const money=n=>{const c=currencies[state.currency]||currencies.PKR;return c.symbol+" "+Math.round(Number(n)||0).toLocaleString(c.locale)};
@@ -359,7 +360,7 @@ function closeModal(){document.getElementById("modalBackdrop").classList.remove(
 document.getElementById("modalBackdrop").addEventListener("click",e=>{if(e.target.id==="modalBackdrop")closeModal()});
 
 function openIncome(){
-openModal(`<h3>Monthly income</h3><div class="sub">Set the income available for the current month.</div><div class="field"><label>AMOUNT</label><input class="input" id="incomeInput" type="number" min="0" value="${state.income||""}" placeholder="250000"></div><div class="modal-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn primary" onclick="saveIncome()">Save income</button></div>`);
+openModal(`<h3>Monthly income</h3><div class="sub">Set the income available for the current month.</div><div class="field"><label>AMOUNT</label><input class="input" id="incomeInput" type="number" min="0" value="${state.income||""}" placeholder="Enter your income"></div><div class="modal-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn primary" onclick="saveIncome()">Save income</button></div>`);
 }
 function saveIncome(){const n=Number(document.getElementById("incomeInput").value);if(n<0)return toast("Enter a valid amount");state.income=n;save();closeModal();toast("Income updated")}
 function openSavings(){
